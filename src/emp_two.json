@@ -1,0 +1,167 @@
+{
+    _id: '9ff9c510-612d-4a5a-baf2-060672984483',
+    name: 'Muhammad Fajar Syahputra',
+    email: 'masterhrissicepat@gmail.com',
+    nik: 'DMMR25040030',
+    fptk_id: 'FPTKKD-18022025-02499',
+    ktp_number: '3172031703070005',
+    ktp_image: '/hr-external/ayomhw1/3172031703070005_250404.jpg',
+    pob: 'JAKARTA',
+    bod: '17-03-2007',
+    gender: 'Laki-laki',
+    marital_status: {
+        status: 'Single',
+        code: '0'
+    },
+    religion: 'Islam',
+    bank_provider: 'BCA',
+    bank_account: '00000000000',
+    address: {
+        street: 'JL Mantang ',
+        city: '',
+        province: '',
+        country: '',
+        district: ''
+    },
+    entry_date: ISODate('2025-04-03T17:00:00.000Z'),
+    phone_number: '082212907029',
+    branch: {
+        address: 'Jl. Cakung Cilincing Raya No.Km 1.5 Cakung 17 7, Jl. Komp. Puninar No.18, RT.17/RW.7, Cakung Bar., Kec. Cakung, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13910',
+        branch_code: '1105056',
+        branch_name: 'Middle Mile Jakarta',
+        province: {
+            province_id: 24,
+            province_code: 'DKI',
+            province_name: 'DKI JAKARTA'
+        },
+        city: {
+            city_id: 540,
+            city_code: 'CGT',
+            city_name: 'Jakarta Timur'
+        }
+    },
+    shift: {
+        _id: 'a20cc8f4-01ea-4b50-87fa-98cd6eacd101',
+        shift: 'Pagi (07:00 s/d 16:00)'
+    },
+    position: {
+        _id: '7cf226d5-2945-4912-ac32-f58508d97d83',
+        name: 'Sortation Sorter Mitra',
+        man_power: 0,
+        code: ''
+    },
+    required_date: {
+        start: ISODate('2025-03-03T17:00:00.000Z'),
+        end: ISODate('2025-04-10T16:59:59.000Z')
+    },
+    provider: {
+        _id: '6f7b3b43-d43a-4019-b46d-7aafef169a4f',
+        name: 'PT. Maximus',
+        attributes: null,
+        quota: 0,
+        status: '',
+        reason: ''
+    },
+    username: 'DMMR25040030',
+    registered_sunfish: 'false',
+    resign_date: ISODate('0001-01-01T00:00:00.000Z'),
+    is_deleted: false,
+    is_verified: true,
+    is_manual_verify: true,
+    is_replacement: true,
+    is_rejected: false,
+    rejected_reasons: null,
+    replace_by: '',
+    replace_by_name: '',
+    replace_for: 'DMMR25030486',
+    replace_for_name: 'Ahmad Mustaqim ',
+    notes_ops: 'OS MAX\n06.00 - 15.00 WIB',
+    notes_hrd: '',
+    is_process_termination: false,
+    process_termination_date: ISODate('0001-01-01T00:00:00.000Z'),
+    created_at: ISODate('2025-04-04T06:59:08.960Z'),
+    created_by: {
+        name: '',
+        username: '',
+        email: '',
+        nik: '',
+        companyid: '',
+        roleid: 0,
+        rolename: ''
+    },
+    updated_at: ISODate('2025-04-04T07:01:15.818Z'),
+    is_active: false,
+    is_ktp_owned_by_active_employee: false,
+    is_recommendation: false,
+    former_employee_id: '',
+    former_nik: '',
+    category: {
+        _id: '7fec8139-01aa-4b65-ac20-cd733b9a05b2',
+        code: 'DMMR',
+        outsource_id: '6f7b3b43-d43a-4019-b46d-7aafef169a4f',
+        name: 'Kemitran Daily PT MAX',
+        year: 23,
+        month: '10',
+        sort_number: '0000',
+        seq_length: 12,
+        fptk_category_id: '8d272224-f5a5-4bbe-b2d1-055a0e7af912',
+        is_sunfish_sei: true,
+        is_sunfish_max: false,
+        description: '',
+        employment_status: 'Kemitraan Daily'
+    },
+    attachments: {
+        kartu_keluarga: {
+            file_path: '/hr-external/ayomhw1/kartu_keluarga.3172031703070005.jpg',
+            hash: 'c33638ce926fcd575a2b8adb18d9bc40d1185c548c4e6d5a6bd1e2781674735a'
+        },
+        sim: {
+            file_path: '/hr-external/ayomhw1/sim.3172031703070005.jpg',
+            hash: 'e5ec4a1e5245903ff1fe25e64b304c079c9997c92e0266a06d4256d18ad46209'
+        },
+        buku_tabungan: {
+            file_path: '/hr-external/ayomhw1/buku_tabungan.3172031703070005.jpg',
+            hash: '9484db48b4db3b1a765e7cd93c050fe1056ea914f06e9852c86900a827529d8b'
+        },
+        ijazah: {
+            file_path: '/hr-external/ayomhw1/ijazah.3172031703070005.jpg',
+            hash: 'e5ec4a1e5245903ff1fe25e64b304c079c9997c92e0266a06d4256d18ad46209'
+        }
+    },
+    fptk_category: {
+        _id: '8d272224-f5a5-4bbe-b2d1-055a0e7af912',
+        name: 'Kemitraan Daily',
+        prefix: 'FPTKKD',
+        attachments: {
+            ijazah: true,
+            sertifikat_vaksin_1: false,
+            setivikasi_security: false,
+            surat_pernyataan_sim: false,
+            sim: true,
+            stnk: false,
+            buku_tabungan: true,
+            kartu_tanda_anggota_security: false,
+            sertifikat_vaksin_2: false,
+            skck: false,
+            kartu_keluarga: true
+        }
+    },
+    updated_by: {
+        name: 'Winda Permata Sari Simanjuntak',
+        username: '22020304',
+        email: 'winda.simanjuntak@sicepat.com',
+        nik: '22020304',
+        companyid: '',
+        roleid: 5,
+        rolename: 'HR-Event'
+    },
+    registered_sunfish_date: ISODate('0001-01-01T00:00:00.000Z'),
+    submitted_employee_date: ISODate('2025-04-04T06:59:07.683Z'),
+    sim: '',
+    expired_date_sim: ISODate('0001-01-01T00:00:00.000Z'),
+    has_sim: false,
+    fup_date_sim: ISODate('0001-01-01T00:00:00.000Z'),
+    employee_category_relationship: 'Mitra Subcon',
+    supervisor: '',
+    indirectsupervisor: ''
+}
