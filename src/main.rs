@@ -787,6 +787,8 @@ impl<T> GetValue<T> for Point<T> where T: PartialOrd {
 // Overloadable Operator
 use core::ops::Add;
 use core::ops::AddAssign;
+use std::fmt::Debug;
+use std::fmt::Display;
 
 struct Apple {
     quantity: u32
@@ -849,3 +851,255 @@ fn test_option() {
     println!("{:?}", result3);
 }
 // End Option Enum
+
+// Comparisson
+
+impl PartialEq for Apple {
+    fn eq(&self, other: &Self) -> bool {
+        self.quantity == other.quantity
+    }
+}
+
+impl PartialOrd for Apple {
+    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+        self.quantity.partial_cmp(&other.quantity)
+    }
+}
+
+#[test]
+fn test_comparisson() {
+    let apple1 = Apple { quantity: 10 };
+    let apple2 = Apple { quantity: 20 };
+
+    println!("Apple 1 == Apple 2: {}", apple1 == apple2);
+    println!("Apple 1 != Apple 2: {}", apple1 != apple2);
+    println!("Apple 1 < Apple 2: {}", apple1 < apple2);
+    println!("Apple 1 > Apple 2: {}", apple1 > apple2);
+}
+// End Comparisson
+
+// String Manipulation
+#[test]
+fn test_string_manipulation() {
+    let name = String::from("Yonathan");
+    println!("{}", name);
+    println!("{}", name.to_ascii_lowercase());
+    println!("{}", name.to_ascii_uppercase());
+    println!("{}", name.to_lowercase());
+    println!("{}", name.to_uppercase());
+    // name.push_str(" Setiadi");
+    // println!("{}", name);
+
+    // let new_name = name.replace("Yonathan", "Jonathan");
+    // println!("{}", new_name);
+
+    // let split_name: Vec<&str> = new_name.split_whitespace().collect();
+    // println!("{:?}", split_name);
+}
+// End String Manipulation
+
+// Formatting
+struct Category {
+    id: String,
+    name: String,   
+}
+
+impl Debug for Category {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("Category")
+            .field("id", &self.id)
+            .field("name", &self.name)
+            .finish()
+    }
+}
+
+impl Display for Category {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "Category: {} - {}", self.id, self.name)
+    }
+}
+
+#[test]
+fn test_formatting() {
+    let category = Category {
+        id: String::from("1"),
+        name: String::from("Food"),
+    };
+
+    println!("{:?}", category);
+    println!("Category: {:#?}", category);
+    println!("{}", category);
+}
+// End Formatting
+
+// Closure
+#[test]
+fn test_closure() {
+    let sum = |a: i32, b: i32| a + b;
+    let sub = |a: i32, b: i32| a - b;
+
+    let result = sum(10, 20);
+    let result2 = sub(20, 10);
+    println!("Result: {}", result);
+    println!("Result2: {}", result2);
+}
+
+fn print_with_filter(value: String, filter: fn(String) -> String) {
+    let result = filter(value);
+    println!("{}", result);
+}
+
+#[test]
+fn test_closure_parameter() {
+    print_with_filter(String::from("Yonathan"), |a:String| a.to_uppercase());
+}
+
+#[test]
+fn test_closure_scope() {
+    let mut counter = 0;
+    let mut increment = || {
+        counter += 1;
+        println!("Counter: {}", counter);
+    };
+    increment();
+    increment();
+    increment();
+
+    println!("Final Counter: {}", counter);
+}
+
+struct Counter {
+    count: i32,
+}
+impl Counter {
+    fn new() -> Counter {
+        Counter { count: 0 }
+    }
+
+    fn increment(&mut self) {
+        self.count += 1;
+    }
+
+    fn get_count(&self) -> i32 {
+        self.count
+    }
+}
+
+#[test]
+fn test_closure_scope_using_struct() {
+    let mut counter = Counter::new();
+
+    counter.increment();
+    counter.increment();
+    counter.increment();
+
+    println!("Final Counter: {}", counter.get_count());
+}
+// End Closure
+
+// Sequence
+// Vector = struktur datanya mirip stack (tumpukan)
+
+#[test]
+fn test_vector() {
+    let mut names: Vec<String> = Vec::new();
+    names.push(String::from("Yonathan"));
+    names.push(String::from("Setiadi"));
+    names.push(String::from("Arif"));
+
+    for name in &names {
+        println!("{}", name);
+    }
+
+    println!("{:?}", names);
+}
+
+// VecDeque = struktur datanya mirip dengan array pada umumnya bisa diakses dari depan dan belakang
+use std::collections::VecDeque;
+#[test]
+fn test_vector_deque() {
+    let mut names: VecDeque<String> = VecDeque::new();
+    names.push_back(String::from("Setiadi"));
+    names.push_front(String::from("Yonathan"));
+
+    for name in &names {
+        println!("{}", name);
+    }
+
+    println!("{}", names[1]);
+}
+
+use std::collections::LinkedList;
+#[test]
+fn test_linked_list() {
+    let mut names: LinkedList<String> = LinkedList::new();
+    names.push_back(String::from("Setiadi"));
+    names.push_front(String::from("Yonathan"));
+    names.push_back(String::from("Arif"));
+    names.push_front(String::from("Budi"));
+
+    for name in &names {
+        println!("{}", name);
+    }
+}
+// End Sequence
+
+// Map
+
+// HashMap
+use std::collections::HashMap;
+#[test]
+fn test_hashmap() {
+    let mut map: HashMap<String, String> = HashMap::new();
+    map.insert(String::from("name"), String::from("Yonathan"));
+    map.insert(String::from("age"), String::from("32"));
+
+    for (key, value) in &map {
+        println!("{}: {}", key, value);
+    }
+
+    println!("{}", map.get("name").unwrap());
+    println!("{}", map.get_mut("age").unwrap());
+}
+
+use std::collections::BTreeMap;
+#[test]
+fn test_btreemap() {
+    let mut map: BTreeMap<String, String> = BTreeMap::new();
+    map.insert(String::from("name"), String::from("Yonathan"));
+    map.insert(String::from("age"), String::from("32"));
+    map.insert(String::from("address"), String::from("Jakarta"));
+
+    for entry in &map {
+        println!("{}: {}", entry.0, entry.1);
+    }
+}
+
+use std::collections::HashSet;
+
+#[test]
+fn test_hash_set() {
+    let mut names: HashSet<String>= HashSet::new();
+    names.insert(String::from("Yonathan"));
+    names.insert(String::from("Setiadi"));
+    names.insert(String::from("Yonathan"));
+    names.insert(String::from("Setiadi"));
+
+    for name in &names {
+        println!("{}", name);
+    }
+}
+
+use std::collections::BTreeSet;
+#[test]
+fn test_btree_set() {
+    let mut names: BTreeSet<String>= BTreeSet::new();
+    names.insert(String::from("Yonathan"));
+    names.insert(String::from("Setiadi"));
+    names.insert(String::from("Yonathan"));
+    names.insert(String::from("Setiadi"));
+
+    for name in &names {
+        println!("{}", name);
+    }
+}
