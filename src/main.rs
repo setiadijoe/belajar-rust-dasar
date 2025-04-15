@@ -1103,3 +1103,110 @@ fn test_btree_set() {
         println!("{}", name);
     }
 }
+
+// Iterator
+#[test]
+fn test_iterator() {
+    let array: [i32; 5] = [1, 2, 3, 4, 5];
+    let mut iter = array.iter();
+
+    println!("Count total iter: {}", iter.clone().count());
+
+    while let Some(value) = iter.next() {
+        println!("{}", value);
+    }
+}
+
+#[test]
+fn test_iterator_method() {
+    let vector: Vec<i32> = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    println!("{:?}", vector);
+    
+    let sum: i32 = vector.iter().sum();
+    println!("Sum: {}", sum);
+
+    let count: usize = vector.iter().count();
+    println!("Count: {}", count);
+
+    let doubled: Vec<i32> = vector.iter().map(|x| x * 2).collect();
+    println!("Doubled: {:?}", doubled);
+
+    let filtered: Vec<&i32> = vector.iter().filter(|x| *x % 2 == 0).collect();
+    println!("Filtered: {:?}", filtered);
+}
+
+// Error Handling
+
+fn connect_database(host: Option<String>){
+    match (host) {
+        Some(host) => {
+            println!("Connect to database {}", host);
+        }
+        None => {
+            println!("No host");
+        }
+    }
+}
+
+#[test]
+fn test_connect_db() {
+    let host = Some(String::from(""));
+    let host2 = None;
+    connect_database(host2);
+    connect_database(host);
+}
+
+fn connect_cache(  host: Option<String>) -> Result<String, String> {
+    match host {
+        Some(host) => {
+            Ok(host)
+        }
+        None => {
+            Err("no cache provider".to_string())
+        }
+    }
+}
+
+#[test]
+fn test_connect_cache() {
+    let cache = connect_cache(None);
+    match cache {
+        Ok(host) => {
+            println!("Cache connected to {}", host);
+        }
+        Err(err) => {
+            println!("Error: {}", err);
+        }
+    }
+}
+
+fn connect_email(host: Option<String>) -> Result<String, String> {
+    match host {
+        Some(host) => {
+            Ok(host)
+        }
+        None => {
+            Err("no email provider".to_string())
+        }
+    }
+}
+
+fn connect_application(host: Option<String>) -> Result<String, String> {
+    connect_cache(host.clone())?;
+    connect_email(host.clone())?;
+
+    Ok(format!("Connect to application"))
+}
+
+#[test]
+fn test_connect_application() {
+    let result = connect_application(None);
+    match result {
+        Ok(host) => {
+            println!("Success with message {}", host);
+        }
+        Err(err) => {
+            println!("Error: {}", err);
+        }
+    }
+}
