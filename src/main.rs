@@ -16,7 +16,7 @@ fn test_module() {
         String::from("nathan@mail.com"), 
         32);
 
-    user.say_hello("Arif");
+    user.say_hello("Burhan");
 }
 
 
